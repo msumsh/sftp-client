@@ -23,7 +23,7 @@ public class ConsoleMenu {
         this.scanner = scanner;
     }
 
-    public void showMenu() {
+    public void start() {
         System.out.println("===== CONSOLE SFTP-CLIENT APPLICATION =====");
 
         ConsoleMenuAction[] actions = ConsoleMenuAction.values();
@@ -36,6 +36,7 @@ public class ConsoleMenu {
                     "Invalid action. Termination", actions);
 
 
+            state = toContinue();
         }
     }
 
@@ -43,7 +44,7 @@ public class ConsoleMenu {
         System.out.println(msg);
 
         for (int i = 1; i <= actions.length; i++) {
-            System.out.println(i + ". " + actions[i]);
+            System.out.println(i + ". " + actions[i - 1]);
         }
     }
 
@@ -52,7 +53,7 @@ public class ConsoleMenu {
 
         int selectedOption = chooseNumber(invalidInputMsg, errMsg, 1, actions.length + 1);
 
-        return actions[selectedOption];
+        return actions[selectedOption - 1];
     }
 
     private int chooseNumber(String msg, String errMsg, int minNum, int maxNum) {
@@ -60,7 +61,7 @@ public class ConsoleMenu {
 
         int attempts = 3;
         while (attempts > 0) {
-            if (!scanner.hasNextLong()) {
+            if (!scanner.hasNextInt()) {
                 attempts--;
                 scanner.next();
                 System.out.println(msg + attempts);
@@ -81,5 +82,9 @@ public class ConsoleMenu {
         System.out.println(errMsg);
 
         return maxNum;
+    }
+
+    private boolean toContinue() {
+        return false;
     }
 }
