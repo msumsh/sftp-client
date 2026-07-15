@@ -16,10 +16,10 @@ public class DomainService {
 
     private List<DomainAddress> domains;
 
-    public DomainService(JsonUtil jsonUtil, Path jsonPath) {
+    public DomainService(JsonUtil jsonUtil, Path jsonPath, IpValidator ipValidator) {
         this.jsonUtil = jsonUtil;
         this.jsonPath = jsonPath;
-        this.ipValidator = new IpValidator();
+        this.ipValidator = ipValidator;
         this.domains = new ArrayList<>();
     }
 
@@ -58,22 +58,22 @@ public class DomainService {
     }
 
     public void add(String domain, String ip) {
-        DomainAddress adrByIp;
+        DomainAddress addrByIp;
 
         boolean isValidIp = ipValidator.validate(ip);
         if (isValidIp) {
-            adrByIp = findByIp(ip);
+            addrByIp = findByIp(ip);
         } else {
             throw new IllegalArgumentException("Invalid IPv4 address");
         }
 
-        DomainAddress adrByDomain = findByDomain(domain);
+        DomainAddress addrByDomain = findByDomain(domain);
 
-        if (adrByIp != null) {
+        if (addrByIp != null) {
             throw new IllegalArgumentException("Address with this IP-address already exists");
         }
 
-        if (adrByDomain != null) {
+        if (addrByDomain != null) {
             throw new IllegalArgumentException("Address with this domain already exists");
         }
 
@@ -87,26 +87,28 @@ public class DomainService {
     }
 
     public void deleteByDomain(String domain) {
-        DomainAddress adr = findByDomain(domain);
+        DomainAddress addr = findByDomain(domain);
 
-        if (adr != null) {
-            domains.remove(adr);
-
-            save();
+        if (addr != null) {
+            delete(addr);
         }
     }
 
     public void deleteByIp(String ip) {
-        DomainAddress adr = findByIp(ip);
+        DomainAddress addr = findByIp(ip);
 
-        if (adr != null) {
-            domains.remove(adr);
-
-            save();
+        if (addr != null) {
+            delete(addr);
         }
     }
 
     private void sort() {
         domains.sort(Comparator.comparing(DomainAddress::getDomain));
+    }
+
+    private void delete(DomainAddress adr) {
+        domains.remove(adr);
+
+        save();
     }
 }
