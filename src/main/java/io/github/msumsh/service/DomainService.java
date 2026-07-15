@@ -4,6 +4,7 @@ import io.github.msumsh.model.DomainAddress;
 import io.github.msumsh.util.IpValidator;
 import io.github.msumsh.util.JsonUtil;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -23,13 +24,13 @@ public class DomainService {
         this.domains = new ArrayList<>();
     }
 
-    public void load() {
+    public void load() throws IOException {
         domains = jsonUtil.read(jsonPath);
 
         sort();
     }
 
-    public void save() {
+    public void save() throws IOException {
         jsonUtil.write(jsonPath, domains);
     }
 
@@ -57,7 +58,7 @@ public class DomainService {
         return null;
     }
 
-    public void add(String domain, String ip) {
+    public void add(String domain, String ip) throws IOException {
         DomainAddress addrByIp;
 
         boolean isValidIp = ipValidator.validate(ip);
@@ -86,7 +87,7 @@ public class DomainService {
         save();
     }
 
-    public void deleteByDomain(String domain) {
+    public void deleteByDomain(String domain) throws IOException {
         DomainAddress addr = findByDomain(domain);
 
         if (addr != null) {
@@ -94,7 +95,7 @@ public class DomainService {
         }
     }
 
-    public void deleteByIp(String ip) {
+    public void deleteByIp(String ip) throws IOException {
         DomainAddress addr = findByIp(ip);
 
         if (addr != null) {
@@ -106,7 +107,7 @@ public class DomainService {
         domains.sort(Comparator.comparing(DomainAddress::getDomain));
     }
 
-    private void delete(DomainAddress adr) {
+    private void delete(DomainAddress adr) throws IOException {
         domains.remove(adr);
 
         save();
