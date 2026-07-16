@@ -20,7 +20,7 @@ public class ConsoleMenu {
         this.service = service;
     }
 
-    public void start() throws IOException {
+    public void work() throws IOException {
         System.out.println("===== CONSOLE SFTP-CLIENT APPLICATION =====");
 
         ConsoleMenuAction[] actions = ConsoleMenuAction.values();
@@ -28,7 +28,7 @@ public class ConsoleMenu {
         while (state) {
             displayActions("===== LIST OF AVAILABLE ACTIONS =====", actions);
 
-            ConsoleMenuAction selectedOption = select("Select an action from the list by choosing a number: ",
+            ConsoleMenuAction selectedOption = select("Select an action from the list by choosing a number.",
                     "Please enter the valid number. Attempts left: ",
                     "Invalid action. Termination", actions);
 
@@ -40,7 +40,7 @@ public class ConsoleMenu {
         System.out.println(msg);
 
         for (int i = 1; i <= actions.length; i++) {
-            System.out.println(i + ". " + actions[i - 1]);
+            System.out.println(i + ". " + (actions[i - 1]).getDisplayName());
         }
     }
 
@@ -53,14 +53,15 @@ public class ConsoleMenu {
     }
 
     private int chooseNumber(String msg, String errMsg, int minNum, int maxNum) {
-        System.out.println(msg);
-
         int attempts = 3;
+
+        System.out.println(msg + " " + attempts);
+
         while (attempts > 0) {
             if (!scanner.hasNextInt()) {
                 attempts--;
                 scanner.next();
-                System.out.println(msg + attempts);
+                System.out.println(msg + " " + attempts);
                 continue;
             }
 
@@ -69,7 +70,7 @@ public class ConsoleMenu {
 
             if (selectedOption  < minNum || selectedOption > maxNum) {
                 attempts--;
-                System.out.println(msg + " Attempts left: " + attempts);
+                System.out.println(msg + " " + attempts);
             } else {
                 return selectedOption;
             }
@@ -119,7 +120,11 @@ public class ConsoleMenu {
 
         DomainAddress addr = service.findByDomain(domain);
 
-        System.out.println(addr.getIp());
+        if (addr != null) {
+            System.out.println(addr.getIp());
+        } else {
+            System.out.println("Address with this domain doesn't exist");
+        }
     }
 
     private void showByIp() {
@@ -128,7 +133,11 @@ public class ConsoleMenu {
 
         DomainAddress addr = service.findByIp(ip);
 
-        System.out.println(addr.getDomain());
+        if (addr != null) {
+            System.out.println(addr.getDomain());
+        } else {
+            System.out.println("Address with this IP-address doesn't exist");
+        }
     }
 
     private void addPair() throws IOException {

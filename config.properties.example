@@ -1,0 +1,5 @@
+host=localhost
+port=22
+login=login
+password=password
+remoteFile=/path/to/remote/file/data.json
