@@ -29,4 +29,9 @@ public class DomainAddress {
     public String getIp() {
         return ip;
     }
+
+    @Override
+    public String toString() {
+        return domain + " - " + ip;
+    }
 }

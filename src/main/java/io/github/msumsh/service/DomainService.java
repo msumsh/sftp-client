@@ -87,19 +87,25 @@ public class DomainService {
         save();
     }
 
-    public void deleteByDomain(String domain) throws IOException {
+    public void delete(String domain, String ip) throws IOException {
+        deleteByDomain(domain);
+
+        deleteByIp(ip);
+    }
+
+    private void deleteByDomain(String domain) throws IOException {
         DomainAddress addr = findByDomain(domain);
 
         if (addr != null) {
-            delete(addr);
+            remove(addr);
         }
     }
 
-    public void deleteByIp(String ip) throws IOException {
+    private void deleteByIp(String ip) throws IOException {
         DomainAddress addr = findByIp(ip);
 
         if (addr != null) {
-            delete(addr);
+            remove(addr);
         }
     }
 
@@ -107,7 +113,7 @@ public class DomainService {
         domains.sort(Comparator.comparing(DomainAddress::getDomain));
     }
 
-    private void delete(DomainAddress adr) throws IOException {
+    private void remove(DomainAddress adr) throws IOException {
         domains.remove(adr);
 
         save();
