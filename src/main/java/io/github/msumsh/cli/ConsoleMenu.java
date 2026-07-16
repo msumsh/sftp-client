@@ -28,7 +28,7 @@ public class ConsoleMenu {
         while (state) {
             displayActions("===== LIST OF AVAILABLE ACTIONS =====", actions);
 
-            ConsoleMenuAction selectedOption = select("Select an action from the list by choosing a number.",
+            ConsoleMenuAction selectedOption = select("Select an action from the list by choosing a number",
                     "Please enter the valid number. Attempts left: ",
                     "Invalid action. Termination", actions);
 
@@ -97,8 +97,11 @@ public class ConsoleMenu {
             case ADD_PAIR:
                 addPair();
                 break;
-            case DELETE_PAIR:
-                deletePair();
+            case DELETE_PAIR_BY_DOMAIN:
+                deletePairByDomain();
+                break;
+                case DELETE_PAIR_BY_IP:
+                deletePairByIp();
                 break;
             case TERMINATE:
                 state = false;
@@ -147,16 +150,24 @@ public class ConsoleMenu {
         System.out.println("Enter the IP-address:");
         String ip = scanner.nextLine();
 
-        service.add(domain, ip);
+        try {
+            service.add(domain, ip);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid address: " + e.getMessage());
+        }
     }
 
-    private void deletePair() throws IOException {
+    private void deletePairByDomain() throws IOException {
         System.out.println("Enter the domain:");
         String domain = scanner.nextLine();
 
+        service.deleteByDomain(domain);
+    }
+
+    private void deletePairByIp() throws IOException {
         System.out.println("Enter the IP-address:");
         String ip = scanner.nextLine();
 
-        service.delete(domain, ip);
+        service.deleteByIp(ip);
     }
 }

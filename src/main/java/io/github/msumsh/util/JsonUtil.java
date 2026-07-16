@@ -13,6 +13,8 @@ public class JsonUtil {
     public List<DomainAddress> read(Path path) throws IOException {
         List<DomainAddress> addresses = new ArrayList<>();
 
+        boolean hasAddresses = false;
+
         if (!Files.exists(path)) {
             return addresses;
         }
@@ -28,6 +30,10 @@ public class JsonUtil {
         for (String line : data) {
             line = line.trim();
 
+            if (line.startsWith("\"addresses\"")) {
+                hasAddresses = true;
+            }
+
             if (line.equals("}") || line.equals("},")) {
                 if (!domain.isEmpty() && !ip.isEmpty()) {
                     addresses.add(new DomainAddress(domain, ip));
@@ -40,6 +46,10 @@ public class JsonUtil {
             } else if (line.startsWith("\"ip\"")) {
                 ip = parseJsonObject(line);
             }
+        }
+
+        if (!hasAddresses) {
+            throw new IOException("Unsupported JSON supported format");
         }
 
         return addresses;
