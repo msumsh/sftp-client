@@ -15,19 +15,24 @@
 
 #### Сборка
 ```bash
-mvn clean test-compile
+mvn clean package
 ```
 
 #### Запуск
-Перед запуском необходимо собрать клиента:
+Если запускать исполняемый .jar файл:
+```bash
+java -jar target/sftp-client-test-sftp-client-test-1.0.jar
+```
+
+Или запустить тесты так:
+```bash
+mvn test
+```
+
+Тогда перед запуском необходимо собрать клиента:
 ```bash
 cd sftp-client
 mvn clean install
-```
-
-Запуск тестов:
-```bash
-mvn test
 ```
 
 #### Запуск Expect-скриптов
