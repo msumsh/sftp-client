@@ -1,4 +1,4 @@
-# sftp-client-test
+# sftp-client-tests
 Тесты для консольного приложения для работы с SFTP-сервера.
 
 #### Структура
@@ -19,6 +19,13 @@ mvn clean test-compile
 ```
 
 #### Запуск
+Перед запуском необходимо собрать клиента:
+```bash
+cd sftp-client
+mvn clean install
+```
+
+Запуск тестов:
 ```bash
 mvn test
 ```
@@ -43,6 +50,6 @@ docker stop sftp-server
 Запуск скрипта
 ```bash
 cd ../sftp-client
-expect ../sftp-client-test/expect/connect_success.exp
+expect ../sftp-client-tests/expect/connect_success.exp
 ```
 Вместо connect_success.exp может быть использован любой другой скрипт.

@@ -148,7 +148,7 @@ public class DomainServiceTest extends BaseTest {
     public void shouldNotDeleteByEmptyDomain() throws Exception {
         service.add("test.com", "1.1.1.1");
 
-        service.deleteByDomain("domain.com");
+        service.deleteByDomain("");
 
         Assert.assertFalse(service.getAll().isEmpty());
     }
