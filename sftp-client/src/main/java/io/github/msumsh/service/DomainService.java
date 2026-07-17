@@ -61,14 +61,14 @@ public class DomainService {
     public void add(String domain, String ip) throws IOException {
         DomainAddress addrByIp;
 
-        boolean isValidIp = (ipValidator.validate(ip) && !ip.isEmpty());
+        boolean isValidIp = ipValidator.validate(ip);
         if (isValidIp) {
             addrByIp = findByIp(ip);
         } else {
             throw new IllegalArgumentException("Invalid IPv4 address");
         }
 
-        if (domain.isEmpty()) {
+        if (domain == null || domain.trim().isEmpty()) {
             throw new IllegalArgumentException("Domain can't be empty");
         }
 
@@ -92,10 +92,6 @@ public class DomainService {
     }
 
     public void deleteByDomain(String domain) throws IOException {
-        if (domain.isEmpty()) {
-            throw new IllegalArgumentException("Domain can't be empty");
-        }
-
         DomainAddress addr = findByDomain(domain);
 
         if (addr != null) {
@@ -104,10 +100,6 @@ public class DomainService {
     }
 
     public void deleteByIp(String ip) throws IOException {
-        if (ip.isEmpty()) {
-            throw new IllegalArgumentException("IP-address can't be empty");
-        }
-
         DomainAddress addr = findByIp(ip);
 
         if (addr != null) {

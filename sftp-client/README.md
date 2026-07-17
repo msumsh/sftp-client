@@ -9,6 +9,35 @@
 - Добавление новой пары "домен – адрес" в файл;
 - Удаление пары "домен – адрес" по доменному имени или IP-адресу.
 
+#### Структура
+- /src/main/java/io/github/msumsh/cli - консольное меню;
+- /src/main/java/io/github/msumsh/client - клиент;
+- /src/main/java/io/github/msumsh/model - модель данных адреса и опции консольного меню;
+- /src/main/java/io/github/msumsh/service - сервис, выполняющий действие с файлом с адресами;
+- /src/main/java/io/github/msumsh/util - вспомогательные утилиты для работы с JSON и валидацией IP;
+- /target - исполняемый .jar файл;
+- config.properties.example - пример конфигурационного файла с данными для подключения;
+
+#### Пример валидного JSON-файла
+```json
+{
+  "addresses": [
+    {
+      "domain": "first.domain",
+      "ip": "192.168.0.1"
+    },
+    {
+      "domain": "second.domain",
+      "ip": "192.168.0.2"
+    },
+    {
+    "domain": "third.domain",
+    "ір": "192.168.0.3"
+    }
+  ]
+}
+```
+
 #### Используемые технологии и инструменты:
 - Java SE 8
 - JSch v0.1.55

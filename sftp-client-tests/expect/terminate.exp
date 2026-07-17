@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+
+set timeout 15
+
+spawn java -jar ../sftp-client/target/sftp-client-1.0.jar
+
+expect "Select an action"
+
+send "7\r"
+
+expect eof
+
+puts "PASSED"

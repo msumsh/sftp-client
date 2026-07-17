@@ -1,0 +1,16 @@
+#!/usr/bin/expect -f
+
+set timeout 15
+
+spawn java -jar ../sftp-client/target/sftp-client-1.0.jar
+
+expect "===== CONSOLE SFTP-CLIENT APPLICATION ====="
+expect "===== LIST OF AVAILABLE ACTIONS ====="
+expect "1. Get \"domain - address\" pairs from the file"
+expect "7. Terminate"
+
+puts "PASSED"
+
+send "7\r"
+
+expect eof
