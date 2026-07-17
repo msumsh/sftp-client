@@ -14,13 +14,36 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
-
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testing.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+            </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>${project.build.testOutputDirectory}</classesDirectory>
+                    <archive>
+                        <manifest>
+                            <mainClass>io.github.msumsh.tests.TestRunner</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>shade</goal></goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -41,7 +64,6 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.12.0</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

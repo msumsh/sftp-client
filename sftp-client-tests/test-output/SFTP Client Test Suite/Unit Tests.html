@@ -1,0 +1,402 @@
+<html>
+<head>
+<title>TestNG:  Unit Tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Unit Tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>38/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Fri Jul 17 12:43:50 MSK 2026</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (48 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='io.github.msumsh.tests.JsonUtilTest.readShouldReturnEmptyListWhenFileDoesNotExist()'><b>readShouldReturnEmptyListWhenFileDoesNotExist</b><br>Test class: io.github.msumsh.tests.JsonUtilTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.JsonUtilTest@63e2203c</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldFindByDomain()'><b>shouldFindByDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotFindByNotExistentDomain()'><b>shouldNotFindByNotExistentDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnTrueForValidIpv4()'><b>validateShouldReturnTrueForValidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 127.0.0.1</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 300.300.300.300</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotFindByNotExistentIp()'><b>shouldNotFindByNotExistentIp</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnTrueForValidIpv4()'><b>validateShouldReturnTrueForValidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 0.0.0.0</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldDeleteByEmptyIp()'><b>shouldDeleteByEmptyIp</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotAddDuplicateIp()'><b>shouldNotAddDuplicateIp</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Address with this IP-address already exists
+	at io.github.msumsh.service.DomainService.add(DomainService.java:78)
+	at io.github.msumsh.tests.DomainServiceTest.shouldNotAddDuplicateIp(DomainServiceTest.java:52)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at io.github.msumsh.tests.TestRunner.main(TestRunner.java:26)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace824208363", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace824208363'><pre>java.lang.IllegalArgumentException: Address with this IP-address already exists
+	at io.github.msumsh.service.DomainService.add(DomainService.java:78)
+	at io.github.msumsh.tests.DomainServiceTest.shouldNotAddDuplicateIp(DomainServiceTest.java:52)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at io.github.msumsh.tests.TestRunner.main(TestRunner.java:26)
+</pre></div></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 192.168.1.1.1</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.JsonUtilTest.readShouldReturnAddressesFromValidJson()'><b>readShouldReturnAddressesFromValidJson</b><br>Test class: io.github.msumsh.tests.JsonUtilTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.JsonUtilTest@63e2203c</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: </td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters:  </td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldSortByDomain()'><b>shouldSortByDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldDeleteByNotExistentIp()'><b>shouldDeleteByNotExistentIp</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotAddInvalidIp()'><b>shouldNotAddInvalidIp</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Invalid IPv4 address
+	at io.github.msumsh.service.DomainService.add(DomainService.java:68)
+	at io.github.msumsh.tests.DomainServiceTest.shouldNotAddInvalidIp(DomainServiceTest.java:60)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at io.github.msumsh.tests.TestRunner.main(TestRunner.java:26)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1268959798", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1268959798'><pre>java.lang.IllegalArgumentException: Invalid IPv4 address
+	at io.github.msumsh.service.DomainService.add(DomainService.java:68)
+	at io.github.msumsh.tests.DomainServiceTest.shouldNotAddInvalidIp(DomainServiceTest.java:60)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at io.github.msumsh.tests.TestRunner.main(TestRunner.java:26)
+</pre></div></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.JsonUtilTest.readShouldReturnEmptyListForEmptyFile()'><b>readShouldReturnEmptyListForEmptyFile</b><br>Test class: io.github.msumsh.tests.JsonUtilTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.JsonUtilTest@63e2203c</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.JsonUtilTest.readShouldThrowExceptionForUnsupportedJsonFormat()'><b>readShouldThrowExceptionForUnsupportedJsonFormat</b><br>Test class: io.github.msumsh.tests.JsonUtilTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.JsonUtilTest@63e2203c</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotDeleteByNotExistentDomain()'><b>shouldNotDeleteByNotExistentDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotFindByEmptyIp()'><b>shouldNotFindByEmptyIp</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotAddDuplicateDomain()'><b>shouldNotAddDuplicateDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Address with this domain already exists
+	at io.github.msumsh.service.DomainService.add(DomainService.java:82)
+	at io.github.msumsh.tests.DomainServiceTest.shouldNotAddDuplicateDomain(DomainServiceTest.java:42)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at io.github.msumsh.tests.TestRunner.main(TestRunner.java:26)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1660794022", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1660794022'><pre>java.lang.IllegalArgumentException: Address with this domain already exists
+	at io.github.msumsh.service.DomainService.add(DomainService.java:82)
+	at io.github.msumsh.tests.DomainServiceTest.shouldNotAddDuplicateDomain(DomainServiceTest.java:42)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at io.github.msumsh.tests.TestRunner.main(TestRunner.java:26)
+</pre></div></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldDeleteByIp()'><b>shouldDeleteByIp</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldDeleteByDomain()'><b>shouldDeleteByDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnTrueForValidIpv4()'><b>validateShouldReturnTrueForValidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 8.8.8.8</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 1..1.1</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.JsonUtilTest.writeShouldWriteEmptyAddressesArray()'><b>writeShouldWriteEmptyAddressesArray</b><br>Test class: io.github.msumsh.tests.JsonUtilTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.JsonUtilTest@63e2203c</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.JsonUtilTest.writeShouldCreateCorrectJsonFile()'><b>writeShouldCreateCorrectJsonFile</b><br>Test class: io.github.msumsh.tests.JsonUtilTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.JsonUtilTest@63e2203c</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnTrueForValidIpv4()'><b>validateShouldReturnTrueForValidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 192.168.0.1</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 192.168.1</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotDeleteByEmptyDomain()'><b>shouldNotDeleteByEmptyDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnTrueForValidIpv4()'><b>validateShouldReturnTrueForValidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 255.255.255.255</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldFindByIp()'><b>shouldFindByIp</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: abc.def.ghi.jkl</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldAddNewPair()'><b>shouldAddNewPair</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotAddEmptyDomain()'><b>shouldNotAddEmptyDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Domain can&apos;t be empty
+	at io.github.msumsh.service.DomainService.add(DomainService.java:72)
+	at io.github.msumsh.tests.DomainServiceTest.shouldNotAddEmptyDomain(DomainServiceTest.java:69)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at io.github.msumsh.tests.TestRunner.main(TestRunner.java:26)
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace599491651", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace599491651'><pre>java.lang.IllegalArgumentException: Domain can&apos;t be empty
+	at io.github.msumsh.service.DomainService.add(DomainService.java:72)
+	at io.github.msumsh.tests.DomainServiceTest.shouldNotAddEmptyDomain(DomainServiceTest.java:69)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at io.github.msumsh.tests.TestRunner.main(TestRunner.java:26)
+</pre></div></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.DomainServiceTest.shouldNotFindByEmptyDomain()'><b>shouldNotFindByEmptyDomain</b><br>Test class: io.github.msumsh.tests.DomainServiceTest</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.DomainServiceTest@370736d9</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 256.1.1.1</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+<tr>
+<td title='io.github.msumsh.tests.IpValidatorTest.validateShouldReturnFalseForInvalidIpv4()'><b>validateShouldReturnFalseForInvalidIpv4</b><br>Test class: io.github.msumsh.tests.IpValidatorTest<br>Parameters: 192.168.-1.1</td>
+<td></td>
+<td>0</td>
+<td>io.github.msumsh.tests.IpValidatorTest@1efed156</td></tr>
+</table><p>
+</body>
+</html>
